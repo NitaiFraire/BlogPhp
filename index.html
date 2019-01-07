@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+</head>
+<body>
+    <header id="cabecera">
+        <div id="logo">
+            <a href="index.php">
+                Blog de videojuegos 
+            </a>
+        </div>
+        <nav id="menu">
+           <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href=""></a>Categoria 1</li>
+                <li><a href=""></a>Categoria 2</li>
+                <li><a href=""></a>Categoria 3</li>
+                <li><a href=""></a>Categoria 4</li>
+                <li><a href=""></a>Sobre mí</li>
+                <li><a href=""></a>Contacto</li>
+           </ul> 
+        </nav>
+    </header>
+    <div id="contenedor">
+        <aside id="sidebar">
+            <div id="login" class="bloque">
+                <h3>Identificate</h3>
+                <form action="login.php" method="POST">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+
+                    <input type="submit" value="Entrar">
+                </form>
+            </div>
+
+            <div id="registro" class="bloque">
+                    <h3>Registrate</h3>
+                    <form action="registro.php" method="POST">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="">
+
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" name="apellidos" id="">
+
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email">
+    
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+    
+                        <input type="submit" value="Resgistrar">
+                    </form>
+                </div>
+        </aside>
+        <div id="principal">
+            <h1>Ultimas entradas</h1>
+            <article class="entrada">
+                <h2>Titulo de mi entrada</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati totam quos sequi sit reprehenderit ipsa debitis aliquid laudantium possimus, vitae esse placeat mollitia ipsam consectetur voluptatibus dolor, pariatur corporis quisquam?</p>
+            </article>
+            <article class="entrada">
+                <h2>Titulo de mi entrada</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati totam quos sequi sit reprehenderit ipsa debitis aliquid laudantium possimus, vitae esse placeat mollitia ipsam consectetur voluptatibus dolor, pariatur corporis quisquam?</p>
+            </article>
+            <article class="entrada">
+                <h2>Titulo de mi entrada</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati totam quos sequi sit reprehenderit ipsa debitis aliquid laudantium possimus, vitae esse placeat mollitia ipsam consectetur voluptatibus dolor, pariatur corporis quisquam?</p>
+            </article>
+        </div>
+    </div>
+    <footer id="pie">
+        <p>Developed by n3T6i &copy; 2018</p>
+    </footer>
+</body>
+</html>
