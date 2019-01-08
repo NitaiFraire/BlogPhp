@@ -1,14 +1,19 @@
 <?php
 
-session_start();
-
 if(isset($_POST)){
+
+    require_once 'includes/conexion.php';
+
+    if(!isset($_SESSION)){
+
+        session_start();
+    }
         
     // Recoger valores del formulario de registro
-    $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
-    $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
-    $email = isset($_POST['email']) ? $_POST['email'] : false;
-    $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, $_POST['nombre']) : false;
+    $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, $_POST['apellidos']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, $_POST['email']) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
 
     // Array de errores
     $errores = array();
@@ -21,7 +26,7 @@ if(isset($_POST)){
         $nombreValidado = true;
     }else{
         $nombreValidado = false;
-        $errores['nombre'] = "El nombre no es valido";
+        $errores['nombre'] = "Nombre invalido";
     }
 
     // Apellidos
@@ -30,7 +35,7 @@ if(isset($_POST)){
         $apellidosValidado = true;
     }else{
         $apellidosValidado = false;
-        $errores['apellidos'] = "Los apellidos no es valido";
+        $errores['apellidos'] = "Apellidos invalidos";
     }
 
     // Email
@@ -39,16 +44,16 @@ if(isset($_POST)){
         $emailValidado = true;
     }else{
         $emailValidado = false;
-        $errores['email'] = "El email no es valido";
+        $errores['email'] = "E-mail invalido";
     }
 
     // Password
-    if(!empty($email)){
+    if(!empty($password)){
 
         $passwordValidado = true;
     }else{
         $passwordValidado = false;
-        $errores['password'] = "El password no es valido";
+        $errores['password'] = "Password invalido";
     }
 
     // verificar errores de registro
@@ -58,11 +63,28 @@ if(isset($_POST)){
     if(count($errores) == 0){
 
         $guardarUsuario = true;
+
+        // cifrar contraseña
+        $passwordCifrada = password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]);
         
+        // insetar usuario en la db
+        $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellidos', '$email', '$passwordCifrada', CURDATE());";
+        $guardar = mysqli_query($db, $sql);
+
+        if($guardar){
+
+            $_SESSION['completado'] = "El registro se ha completado con éxito";
+
+        }else{
+
+            $_SESSION['errores']['general'] = "Fallo al guardar usuario";
+        }
+
     }else{
         $_SESSION['errores'] = $errores;
-        header('Location: index.php');
     }
 }
+
+header('Location: index.php');
 
 ?>

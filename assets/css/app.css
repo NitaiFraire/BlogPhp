@@ -23,6 +23,26 @@ body{
     background: url(../img/cubes.png) #F4F4F4;
 }
 
+.alerta{
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(59, 145, 59);
+    box-shadow: 0px 1px 3px #ccc;
+    margin-bottom: 15px;
+    border-radius: 2px;
+}
+
+.alertaError{
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(175, 64, 69);
+    box-shadow: 0px 1px 3px #ccc;
+    margin-bottom: 15px;
+    border-radius: 2px;
+}
+
 /* Cabecera */
 
 #cabecera{
