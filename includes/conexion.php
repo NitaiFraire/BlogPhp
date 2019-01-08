@@ -9,4 +9,7 @@ $db = mysqli_connect($server, $userName, $password, $database);
 
 mysqli_query($db, "SET NAMES 'utf8'");
 
+// Iniciar sesion
+session_start();
+
 ?>
