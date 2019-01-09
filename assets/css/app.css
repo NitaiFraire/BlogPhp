@@ -225,7 +225,8 @@ input[type="password"]{
 }
 
 input[type="button"],
-input[type="submit"]{
+input[type="submit"],
+.boton{
     margin-top: 5px;
     margin-bottom: 5px;
 
@@ -237,6 +238,20 @@ input[type="submit"]{
     background: #007ee5;
     border: 1px solid #156785;
     margin: 0px auto;
+}
+
+.boton{
+    margin-top: 8px;
+    width: 130px;
+    text-align: center;
+}
+
+.boton-cerrar{
+    background: rgb(175, 64, 69);
+}
+
+.boton-crear{
+    background: #156785;
 }
 
 #pie{
