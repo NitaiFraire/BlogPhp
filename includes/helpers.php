@@ -13,7 +13,7 @@ function mostrarError($errores, $campo){
     return $alerta;
 }
 
-// Funcion para borrar los errores de registro de formulario
+// Funcion para borrar los errores en formularios
 function borrarErrores(){
 
     $borrado = false;
@@ -28,6 +28,11 @@ function borrarErrores(){
         
         $_SESSION['completado'] = null;
         session_unset($_SESSION['completado']);
+    }
+
+    if(isset($_SESSION['erroresEntrada'])){
+
+        $_SESSION['erroresEntrada'] = null;
     }
     
     return $borrado;
