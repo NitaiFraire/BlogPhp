@@ -23,6 +23,13 @@ body{
     background: url(../img/cubes.png) #F4F4F4;
 }
 
+textarea{
+
+    background: white;
+    color: black;
+    margin-bottom: 2rem;
+}
+
 .alerta{
     padding: 10px;
     font-size: 14px;
@@ -275,4 +282,6 @@ input[type="submit"],
     margin-top: 8px;
     font-size: 14px;
 }
+
+
 
