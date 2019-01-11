@@ -22,15 +22,20 @@
             <ul>
                 <li><a href="index.php">Inicio</a></li>
                 <?php  
+
                     $categorias = seleccionarConsultas($db);
 
-                    while($categoria = mysqli_fetch_assoc($categorias)):
+                    if(!empty($categorias)):
+                        while($categoria = mysqli_fetch_assoc($categorias)):
                 ?>
-                    <li>
-                        <a href="categoria.php?id=<?=$categoria['id']?>"><?= $categoria['nombre'] ?></a>
+                        <li>
+                            <a href="categoria.php?id=<?=$categoria['id']?>"><?= $categoria['nombre'] ?></a>
+                        </li>
 
-                    </li>
-                <?php endwhile; ?>
+                <?php
+                        endwhile;
+                    endif; 
+                 ?>
                 <li><a href="">Sobre mí</a></li>
                 <li><a href="">Contacto</a></li>
            </ul> 

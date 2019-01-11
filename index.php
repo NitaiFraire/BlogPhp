@@ -2,24 +2,24 @@
     <?php require_once 'includes/lateral.php'?> 
         <div id="principal">
             <h1>Ultimas entradas</h1>
-            <a href="">
+
+            <?php
+                $entradas = seleccionarUltimasEntradas($db);
+
+                if(!empty($entradas)):
+                    while($entrada = mysqli_fetch_assoc($entradas)):
+            ?>
                 <article class="entrada">
-                    <h2>Titulo de mi entrada</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati totam quos sequi sit reprehenderit ipsa debitis aliquid laudantium possimus, vitae esse placeat mollitia ipsam consectetur voluptatibus dolor, pariatur corporis quisquam?</p>
+                    <a href="">
+                        <h2><?= $entrada['titulo'] ?></h2>
+                        <span class="fecha"><?= $entrada['categoria']. ' | '. $entrada['fecha']?></span>
+                        <p><?= substr($entrada['descripcion'], 0, 180) . "..." ?></p>
+                    </a>
                 </article>
-            </a>
-            <a href="">
-                <article class="entrada">
-                    <h2>Titulo de mi entrada</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati totam quos sequi sit reprehenderit ipsa debitis aliquid laudantium possimus, vitae esse placeat mollitia ipsam consectetur voluptatibus dolor, pariatur corporis quisquam?</p>
-                </article>
-            </a>
-            <a href="">
-                <article class="entrada">
-                    <h2>Titulo de mi entrada</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati totam quos sequi sit reprehenderit ipsa debitis aliquid laudantium possimus, vitae esse placeat mollitia ipsam consectetur voluptatibus dolor, pariatur corporis quisquam?</p>
-                </article>
-            </a>
+            <?php
+                    endwhile;      
+                endif; 
+            ?>
             <div id="verTodas">
                 <a href="">Ver todas las entradas</a>
             </div>
@@ -27,3 +27,4 @@
     <?php require_once 'includes/footer.php' ?>
 </body>
 </html>
+
