@@ -1,10 +1,10 @@
-    <?php require_once 'includes/header.php'?>
+<?php require_once 'includes/header.php'?>
     <?php require_once 'includes/lateral.php'?> 
         <div id="principal">
-            <h1>Ultimas entradas</h1>
+            <h1>Todas las entradas</h1>
 
             <?php
-                $entradas = seleccionarEntradas($db, true);
+                $entradas = seleccionarEntradas($db);
 
                 if(!empty($entradas)):
                     while($entrada = mysqli_fetch_assoc($entradas)):
@@ -20,9 +20,6 @@
                     endwhile;      
                 endif; 
             ?>
-            <div id="verTodas" >
-                <a href="entradas.php">Ver todas las entradas</a>
-            </div>
         </div>
     <?php require_once 'includes/footer.php' ?>
 </body>
