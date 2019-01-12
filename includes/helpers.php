@@ -56,11 +56,17 @@ function seleccionarConsultas($conexion){
 }
 
 // 
-function seleccionarEntradas($conexion, $limit = null){
+function seleccionarEntradas($conexion, $limit = null, $categoria = null){
 
     $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e ".
-           "INNER JOIN categorias c ON e.categoria_id = c.id ".
-           "ORDER BY e.id DESC ";
+           "INNER JOIN categorias c ON e.categoria_id = c.id ";
+
+    if(!empty($categoria)){
+
+        $sql .= "WHERE e.categoria_id = $categoria ";
+    }   
+
+    $sql .= "ORDER BY e.id DESC ";
 
     if($limit){
 
@@ -77,6 +83,23 @@ function seleccionarEntradas($conexion, $limit = null){
     }
 
     return $entradas;
+}
+
+function getCategoria($conexion, $id){
+
+    $sql = "SELECT * FROM categorias WHERE id = $id;";
+
+    $categorias = mysqli_query($conexion, $sql);
+
+    $resultado = array();
+
+    if($categorias && mysqli_num_rows($categorias) >= 1){
+
+        $resultado = mysqli_fetch_assoc($categorias);
+    }
+
+    return $resultado;
+
 }
 
 
